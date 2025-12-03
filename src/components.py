@@ -1,15 +1,24 @@
 from dataclasses import dataclass as component
 
+
+@component
+class Player:
+    pass
+
+
 @component
 class Position:
-    x: float = 0.0
-    y: float = 0.0
+    x: int = 0
+    y: int = 0
+
 
 @component
 class Velocity:
-    x: float = 0.0
-    y: float = 0.0
+    x: int = 0
+    y: int = 0
+
 
 @component
 class Display:
     char: str = "?"
+

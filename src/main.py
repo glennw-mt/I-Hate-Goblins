@@ -1,25 +1,21 @@
-import tcod.console
-import tcod.context
-import tcod.event
-import tcod.tileset
-from components import *
-from systems import *
-from events import *
+import components as C
+import systems as S
+import events as EV
 import esper
+
 
 def main() -> None:
     player: int = esper.create_entity(
-        Velocity(x=0.0, y=0.0), 
-        Position(x=5.0, y=5.0),
-        Display(char="@")
+        C.Player(),
+        C.Velocity(x=0, y=0),
+        C.Position(x=5, y=5),
+        C.Display(char="@"),
     )
-    esper.add_processor(MovementProcessor())
-    esper.add_processor(DisplayProcessor())
-    esper.add_processor(ControlProcessor())
+    esper.add_processor(S.MovementProcessor())
+    esper.add_processor(S.DisplayProcessor())
+    esper.add_processor(S.ControlProcessor())
     while True:
         esper.process()
-        handle_events()
-        
 
 
 if __name__ == "__main__":
